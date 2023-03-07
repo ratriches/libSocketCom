@@ -1,0 +1,21 @@
+>> libSocketCom
+
+The purpose of this library is to facilitate communication between applications using sockets, in a client/server approach.
+
+Basically an app behaves like a server, waiting connections, and another app behaves like a client, connecting to it.
+This library, abstract the socket 'up/down/errors' management, and offers simples callbacks functions to inform the apps about these events.
+The library has a 'system log' embedded.
+
+How to use AppTest**
+- at a terminal, run 'AppTestLocalServer' (or AppTestInetServer) (1)
+> the server will be waiting for connections
+- at another terminal, run 'AppTestLocalClient' (or AppTestInetClient) (2)
+> the client will connect at he server and start the communication, sending a 'command', then the server will answer with a 'response'.
+
+> now, you can simulate 'server or client crash', with Ctrl+C at the server or client terminal
+> then you can simulate 'server or client respawn', running it again
+> see the events on the terminal ( onConnect, onReceive, onDisconnect )
+
+The AppTestLocal* create a local socket, making possible only "internal host" communication
+The AppTestInet* create a 'normal' socket, ie, an ip/port socket, making possible remote communication (to another host)
+
